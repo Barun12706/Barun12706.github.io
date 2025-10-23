@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Barun Kumar — Portfolio</title>
+<meta name="description" content="Portfolio of Barun Kumar — Full Stack Developer | M.Tech CSE @ IIIT Delhi" />
+<meta name="color-scheme" content="light dark" />
+<style>
+  :root{
+    --bg: #0b0d12;
+    --panel: #12151d;
+    --text: #e6e9ef;
+    --muted:#9aa4b2;
+    --brand:#7c5cff;
+    --brand-2:#3dd6ed;
+    --card:#0e1117;
+    --border:#242a37;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --accent-ok:#2ecc71;
+  }
+  :root.light{
+    --bg:#f7f8fb;
+    --panel:#ffffff;
+    --text:#12151d;
+    --muted:#5b6779;
+    --brand:#5b4bff;
+    --brand-2:#0bb8d0;
+    --card:#ffffff;
+    --border:#e7e9ee;
+    --shadow: 0 12px 22px rgba(10,20,30,.08);
+    --accent-ok:#1a9b53;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    background: linear-gradient(180deg,var(--bg) 0%, color-mix(in oklab, var(--bg) 85%, var(--brand-2)) 120%);
+    color:var(--text);
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:1100px; margin:auto; padding:0 20px}
+  header.nav{
+    position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+    background: color-mix(in oklab, var(--bg) 85%, transparent);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+  .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+  .brand .dot{width:10px;height:10px;border-radius:50%; background:linear-gradient(45deg,var(--brand),var(--brand-2))}
+  nav ul{display:flex; list-style:none; gap:18px; padding:0; margin:0}
+  nav a{padding:8px 10px; border-radius:10px}
+  nav a:hover{background:color-mix(in oklab, var(--panel) 70%, var(--brand-2))}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); padding:10px 14px; border-radius:14px; background:var(--panel);
+    box-shadow:var(--shadow); cursor:pointer
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-ghost{background:transparent; box-shadow:none}
+  .toggle{border-radius:999px}
+  .hero{
+    padding:64px 0 24px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center;
+  }
+  .card{
+    background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:var(--shadow)
+  }
+  .chip{display:inline-flex; align-items:center; gap:8px; border:1px dashed var(--border); padding:6px 10px;border-radius:999px; color:var(--muted)}
+  .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+  .grid{display:grid; gap:18px}
+  .grid.two{grid-template-columns: repeat(2, minmax(0,1fr))}
+  .grid.three{grid-template-columns: repeat(3, minmax(0,1fr))}
+  section{padding:28px 0}
+  h1{font-size:48px; line-height:1.1; margin:8px 0 6px}
+  h2{font-size:28px; margin:0 0 14px}
+  h3{font-size:18px; margin:0 0 8px}
+  p{margin:10px 0}
+  .muted{color:var(--muted)}
+  .list{display:grid; gap:12px}
+  .badge{
+    display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:color-mix(in oklab, var(--panel) 75%, var(--brand-2));
+    border:1px solid var(--border); border-radius:999px; font-size:13px; margin:4px 6px 0 0
+  }
+  .kv{display:flex; gap:10px; flex-wrap:wrap}
+  .row{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+  .edu-item, .work-item, .proj-item{display:grid; gap:6px}
+  .pill{display:inline-block; padding:4px 10px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
+  .footer{padding:28px 0 60px; color:var(--muted); text-align:center}
+  .avatar{
+    width:160px;height:160px; border-radius:22px; border:1px solid var(--border);
+    background: radial-gradient(120px 120px at 40% 30%, color-mix(in oklab, var(--brand) 45%, transparent), transparent), linear-gradient(180deg,var(--panel),var(--card));
+    box-shadow: var(--shadow);
+  }
+  .kpis{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px; margin-top:12px}
+  .kpi{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px; text-align:center}
+  .kpi .n{font-weight:800; font-size:22px}
+  .timeline{display:grid; gap:14px}
+  .timeline .item{padding:16px; border:1px solid var(--border); background:var(--panel); border-radius:14px}
+  .item .when{font-size:13px; color:var(--muted)}
+  .proj-tech{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+  .proj-tech .pill{background:color-mix(in oklab, var(--panel) 80%, var(--brand-2))}
+  .contact{display:flex; gap:12px; flex-wrap:wrap}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  /* responsive */
+  @media (max-width: 880px){
+    .hero-grid{grid-template-columns:1fr}
+    .grid.two, .grid.three{grid-template-columns:1fr}
+    nav ul{display:none}
+  }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Barun Kumar</span>
+    </div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="btn toggle" id="themeToggle" aria-label="Toggle dark or light theme">
+      <span aria-hidden="true">🌗</span> Theme
+    </button>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="card">
+        <span class="chip">Full Stack Developer · M.Tech CSE @ IIIT Delhi</span>
+        <h1>Barun Kumar</h1>
+        <p class="muted">Building scalable, secure systems—across <b>React/Angular</b> frontends, <b>Django/Node</b> backends, and cloud-native microservices with <b>Kubernetes</b>, <b>Docker</b>, and robust DevOps practices. Passionate about cybersecurity and high-performance systems.</p>
+        <div class="actions">
+          <a class="btn" href="mailto:barun24026@iiitd.ac.in" aria-label="Email Barun">✉️ Email</a>
+          <a class="btn btn-ghost" href="https://github.com/Barun12706" target="_blank" rel="noopener" aria-label="Open GitHub profile">🐙 GitHub</a>
+          <!-- Optional: replace # with your LinkedIn link when ready -->
+          <a class="btn btn-ghost" href="#" aria-label="Open LinkedIn profile">in LinkedIn</a>
+        </div>
+        <div class="kpis" role="list" aria-label="Highlights">
+          <div class="kpi" role="listitem"><div class="n">2+ yrs</div><div class="muted">Industry Experience</div></div>
+          <div class="kpi" role="listitem"><div class="n">200+</div><div class="muted">DSA Problems</div></div>
+          <div class="kpi" role="listitem"><div class="n">GATE 2024</div><div class="muted">Qualified (CSE)</div></div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;justify-content:center;align-items:center;">
+        <!-- Placeholder avatar block -->
+        <div class="avatar" role="img" aria-label="Barun's profile illustration"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="grid two">
+      <div class="card">
+        <h2>About</h2>
+        <p>M.Tech candidate in Computer Science & Engineering at <b>IIIT Delhi</b> with prior experience as a Software Engineer at <b>Tavant Technologies</b> (Bangalore). I focus on system design, security-first engineering, and delivering robust user experiences.</p>
+        <div class="row">
+          <span class="badge">Cyber Security</span>
+          <span class="badge">Software Engineering</span>
+          <span class="badge">Object-Oriented Design</span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Quick Info</h2>
+        <div class="list">
+          <div class="row"><span class="pill">Email</span> <a href="mailto:barun24026@iiitd.ac.in">barun24026@iiitd.ac.in</a></div>
+          <div class="row"><span class="pill">GitHub</span> <a href="https://github.com/Barun12706" target="_blank" rel="noopener">github.com/Barun12706</a></div>
+          <div class="row"><span class="pill">Location</span> India</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="item">
+        <div class="edu-item">
+          <h3>Indraprastha Institute of Information Technology, Delhi — M.Tech, CSE</h3>
+          <div class="when">2024 – Present</div>
+          <div class="muted">CGPA: 8.42 (till 2nd semester)</div>
+          <div class="kv">
+            <span class="pill">Graduate Systems</span>
+            <span class="pill">Operating Systems</span>
+            <span class="pill">Algorithms & Complexity</span>
+            <span class="pill">DBMS</span>
+            <span class="pill">Machine Learning</span>
+            <span class="pill">Computer Security</span>
+            <span class="pill">Ethical Hacking</span>
+            <span class="pill">Information Integration</span>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="edu-item">
+          <h3>C. V. Raman Global University, Odisha — B.Tech, CS & IT</h3>
+          <div class="when">2018 – 2022</div>
+          <div class="muted">CGPA: 7.89</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="edu-item">
+          <h3>Gyan Jyoti Residential Public School, Patna — CBSE</h3>
+          <div class="when">2017 – 2018</div>
+          <div class="muted">Percentage: 72.8%</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="edu-item">
+          <h3>DAV Public School BSEB, Patna — CBSE</h3>
+          <div class="when">2014 – 2015</div>
+          <div class="muted">CGPA: 8.6</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills & Tools</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>Programming Languages</h3>
+        <div class="kv">
+          <span class="badge">C</span><span class="badge">C++</span><span class="badge">Python</span>
+          <span class="badge">JavaScript</span><span class="badge">TypeScript</span>
+          <span class="badge">SQL</span><span class="badge">HTML</span><span class="badge">CSS</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Frameworks & Libraries</h3>
+        <div class="kv">
+          <span class="badge">ReactJS</span><span class="badge">Angular</span><span class="badge">Django</span>
+          <span class="badge">NumPy</span><span class="badge">Pandas</span><span class="badge">Matplotlib</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>DevOps & Cloud</h3>
+        <div class="kv">
+          <span class="badge">Linux (SysProg & Shell)</span><span class="badge">Git & GitHub</span>
+          <span class="badge">Docker</span><span class="badge">Kubernetes</span>
+          <span class="badge">Nginx</span><span class="badge">Prometheus</span><span class="badge">Grafana</span>
+          <span class="badge">REST APIs</span><span class="badge">Postman</span>
+          <span class="badge">Google Cloud (GCP)</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Databases</h3>
+        <div class="kv">
+          <span class="badge">MongoDB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="item work-item">
+        <h3>Software Engineer — Tavant Technologies India Pvt. Ltd., Bangalore</h3>
+        <div class="when">Aug 2022 – Jul 2024</div>
+        <ul>
+          <li>Built production-grade UIs with <b>ReactJS</b> and <b>Angular</b> for real-time data interaction.</li>
+          <li>Applied <b>OOP</b> principles to deliver modular, scalable features.</li>
+          <li>Integrated <b>REST APIs</b> for dynamic content and system communication.</li>
+          <li>Collaborated in <b>Agile</b> teams with backend & QA to ship quality releases.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid two">
+      <div class="card proj-item">
+        <h3>WiFi Communication Simulator</h3>
+        <div class="when">Aug 2024 – Dec 2024 · C++</div>
+        <p>Simulator modeling WiFi 4/5/6 with CSMA/CA, MU-MIMO, and OFDMA; MAC-layer behavior and throughput analysis. Demonstrates protocol design, systems programming, and network modeling.</p>
+        <div class="proj-tech">
+          <span class="pill">C++</span><span class="pill">Systems</span><span class="pill">Networking</span>
+        </div>
+      </div>
+      <div class="card proj-item">
+        <h3>Secure Social Media Marketplace Platform</h3>
+        <div class="when">Aug 2024 – Dec 2024 · Team of 4</div>
+        <p>Secure full-stack platform with P2P marketplace, OTP login, JWT, and blockchain-backed admin logging. E2E encrypted chats, 2FA, rate-limiting, and Nginx reverse proxy for hardening; admin panel with moderation & tamper-proof audit trails.</p>
+        <div class="proj-tech">
+          <span class="pill">Django / Node</span><span class="pill">Nginx</span><span class="pill">Security</span><span class="pill">Blockchain (audit)</span>
+        </div>
+      </div>
+      <div class="card proj-item">
+        <h3>DeathStarBench Microservices Social Network</h3>
+        <div class="when">Dec 2024 – Jun 2025 · Team of 4</div>
+        <p>Deployed DeathStarBench-based social network on GCP using <b>Kubernetes</b>, with <b>Prometheus</b> & <b>Grafana</b> for monitoring and performance tuning focused on scalability, resource optimization, and observability.</p>
+        <div class="proj-tech">
+          <span class="pill">Kubernetes</span><span class="pill">Prometheus</span><span class="pill">Grafana</span><span class="pill">GCP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <h2>Awards & Achievements</h2>
+    <div class="grid two">
+      <div class="card">
+        <ul>
+          <li>Completed <b>200+ DSA</b> problems on multiple platforms.</li>
+          <li>Qualified <b>GATE 2024</b> (CSE).</li>
+          <li>Completed <b>Cisco Certification</b> (Networking & IT infrastructure).</li>
+          <li>First Prize — <b>Yoga</b> (Institute Level).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Positions of Responsibility</h3>
+        <ul>
+          <li>Teaching Assistant — Fundamentals of Database Systems (Jan 2025 – Jun 2025)</li>
+          <li>Teaching Assistant — Introduction to Programming (Aug 2024 – Dec 2024)</li>
+          <li>Student Representative — B.Tech Batch (Aug 2018 – Dec 2019)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Open to internships, full-time roles, and collaborations.</p>
+      <div class="contact">
+        <a class="btn" href="mailto:barun24026@iiitd.ac.in">✉️ Email</a>
+        <a class="btn btn-ghost" href="https://github.com/Barun12706" target="_blank" rel="noopener">🐙 GitHub</a>
+        <a class="btn btn-ghost" href="#" title="Add your LinkedIn URL in index.html">in LinkedIn</a>
+      </div>
+      <p class="muted" style="margin-top:8px">Tip: once you have a LinkedIn URL, replace the <code>#</code> above.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    © <span id="year"></span> Barun Kumar · Built with HTML+CSS · Dark/Light friendly
+  </div>
+</footer>
+
+<script>
+  // Persisted theme toggle (dark by default)
+  const root = document.documentElement;
+  const key = "theme-pref";
+  const saved = localStorage.getItem(key);
+  if(saved === "light") root.classList.add("light");
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    root.classList.toggle('light');
+    localStorage.setItem(key, root.classList.contains('light') ? 'light' : 'dark');
+  });
+
+  // Smooth scroll for in-page links (basic, no hash-jump)
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); history.pushState(null,'','#'+id); }
+    });
+  });
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
